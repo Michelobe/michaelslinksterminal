@@ -1,223 +1,211 @@
-@import "./reset.css";
+:root{
+    --bg: #0B1210;
+    --panel: #111C18;
+    --panel-featured: #10261C;
+    --line: #1F2E28;
+    --text: #D7F5E3;
+    --muted: #7FA392;
+    --bright: #FFFFFF;
+    --accent: #4ADE80;
+    --error: #FCA5A5;
+    --font: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
 
-.container{
-    background: rgb(255,0,0);
-    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(0,0,0,1) 100%);
-    font-size: 1.5rem;
-    width: 100vw;
-    height: 100vh;
-    min-height: 700px;
-    text-align: center;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
-.container .linkSection{
-    z-index: 100;
-    margin: 0 auto;
-    color: white;
-    border: .8rem solid black;
-    border-radius: 25px;
-    padding: 1rem 1rem .5rem 1rem;
-    width: 320px;
-    height: 600px;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+
+body{
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 0.9375rem;
+    line-height: 1.5;
 }
-.container .linkSection .buttonContainer .header{
-    font-family: 'Cantarell', sans-serif;
-    background: transparent;
-    border-radius: 50px;
-    color: white;
-    margin: 0 auto;
-    width: 10rem;
+
+h1, p, ul{ margin: 0; }
+ul{ padding: 0; list-style: none; }
+
+a{ color: inherit; text-decoration: none; }
+
+:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
-.container .linkSection .buttonContainer .header img{
+
+.visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ~~~~~~~~~~~~~~~~LAYOUT~~~~~~~~~~~~~~~~ */
+.term{
     width: 100%;
-}
-.container .linkSection .buttonContainer .singleElBtn{
-    padding: .5rem 1rem;
-    margin: 1rem 0 0 0;
+    max-width: 34rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: 3rem 1rem 1.5rem;
     display: flex;
-    justify-content: center;
-    border-radius: 50px;
-    cursor: pointer;
-    background: transparent;
-    border: 3px solid white;
-    text-decoration: none;
+    flex-direction: column;
+    gap: 1.75rem;
 }
-.container .linkSection .buttonContainer .singleElBtn h1{
-    color: white;
-    font-weight: bold;
-    font-family: 'Cantarell', sans-serif;
-    letter-spacing: 2.5;
-}
-.container .linkSection .buttonContainer .button{
-    /* PADDING-RIGHT HAS EXTRA 1REM TO HELP CENTER THE 2ND ELEMENT */
-    padding: .5rem 2rem .5rem 1rem;
-    display: grid;
-    grid-template-columns: 1fr 10fr;
-    justify-items: center;
-    margin: 1rem 0 0 0;
-    border-radius: 50px;
-    cursor: pointer;
-    background: transparent;
-    border: 3px solid white;
-    text-decoration: none;
-    color: white;
-}
-.container .linkSection .buttonContainer .button h1{
-    color: white;
-    font-weight: bold;
-    font-family: 'Cantarell', sans-serif;
-    letter-spacing: 2.5;
-}
-.container .linkSection .buttonContainer .button i{
-    text-decoration: none;
-}
-.container .linkSection .buttonContainer .easterEgg{
-    position: relative;
-    margin-top: 1rem;
-}
-.container .linkSection .buttonContainer .easterEgg .dragonBtn{
-    margin: 1rem .5rem;
-    font-size: 1.5rem;
-}
-.container .linkSection .buttonContainer .dragonballBtn{
-    margin: 1rem .5rem;
-    padding: .5rem;
-    font-size: .6rem;
-    background: orange;
-    border-radius: 50%;
-    position: relative;
-    top: -.3rem;
-}
-.container .linkSection .contentContainer .footer{
-    margin: 30px auto;
-    color: black;
-    font-weight: bold;
-    font-family: 'Cantarell', sans-serif;
+
+.block{
     display: flex;
-    flex-flow: row;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.prompt{ overflow-wrap: anywhere; }
+.prompt .user{ color: var(--accent); }
+.prompt .path{ color: var(--muted); }
+
+.muted{ color: var(--muted); font-size: 0.8125rem; }
+
+/* ~~~~~~~~~~~~~~~~WHOAMI~~~~~~~~~~~~~~~~ */
+.id{
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+.initials{
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    background: var(--panel);
+    display: flex;
+    align-items: center;
     justify-content: center;
-}
-.container .linkSection .contentContainer .footer i{
-    margin-right: .25rem;
-    color: rgb(2, 163, 2);
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* ~~~~~~~~~~~~~~TABLET~~~~~~~~~~~~~~~~ */
-@media only screen and (max-device-width: 1050px) {
-    .container .linkSection{
-        border: none;
-        border-radius: 0;
-        padding: 0 1rem .5rem 0;
-        width: 80vw;
-        height: 100vh;
-        font-size: 2.5rem;
-        margin-top: 1rem;
-    }
-    .container .linkSection .buttonContainer .header{
-        width: 35vw;
-        margin-bottom: 3rem;
-    }
-    .container .linkSection .buttonContainer .singleElBtn{
-        padding: 1.5rem 1rem;
-        margin: 1rem 0 0 1rem;
-        border: 7px solid white;
-    }
-    .container .linkSection .buttonContainer .button{
-        padding: 1.5rem 5.5rem 1.5rem 1.5rem;
-        margin: 1rem 0 0 1rem;
-        border: 7px solid white;
-    }
-    .container .linkSection .buttonContainer .easterEgg{
-        position: relative;
-    }
-    .container .linkSection .buttonContainer .easterEgg .dragonBtn{
-        font-size: 2.5rem;
-        margin-right: 1rem;
-    }
-    .container .linkSection .buttonContainer .easterEgg .dragonballBtn{
-        font-size: 1rem;
-        padding: .85rem;
-        position: relative;
-        top: -.5rem;
-    }
-    .container .linkSection .contentContainer .footer{
-        font-size: 3rem;
-        margin-bottom: 2rem;
-    }
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--accent);
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* ~~~~~~~~~~TABLET LANDSCAPE~~~~~~~~~~ */
-@media only screen and (max-device-width: 1050px) and (orientation:landscape){
-    .container{
-        justify-content: start;
-    }
-    .container .linkSection{
-        font-size: 1.5rem;
-        width: 50vw;
-    }
-    .container .linkSection .buttonContainer .header{
-        width: 12rem;
-    }
-    .container .linkSection .buttonContainer .singleElBtn{
-        padding: 1rem;
-        border: 4px solid white;
-    }
-    .container .linkSection .buttonContainer .button{
-        padding: 1rem 3rem 1rem 1rem;
-        margin: 1rem 0 0 1rem;
-        border: 4px solid white;
-    }
+h1{
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--bright);
 }
 
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* ~~~~~~~~~~~~~~MOBILE~~~~~~~~~~~~~~~~ */
-@media only screen and (max-device-width: 480px) {
-    .container .linkSection{
-        border: none;
-        border-radius: 0;
-        padding: 1rem 1rem .5rem 1rem;
-        width: 80vw;
-        height: 100vh;
-        font-size: 3rem;
-    }
-    .container .linkSection .buttonContainer .header{
-        width: 50vw;
-    }
-    .container .linkSection .buttonContainer .singleElBtn{
-        padding: 1.5rem 1rem;
-        margin: 3rem 0 0 1rem;
-        border: 7px solid white;
-    }
-    .container .linkSection .buttonContainer .button{
-        padding: 1.5rem 5.5rem 1.5rem 1.5rem;
-        margin: 3rem 0 0 1rem;
-        border: 7px solid white;
-    }
-    .container .linkSection .buttonContainer .easterEgg{
-        margin-top: 3rem;
-        position: relative;
-    }
-    .container .linkSection .buttonContainer .easterEgg .dragonBtn{
-        font-size: 4.5rem;
-        margin-right: 2rem;
-    }
-    .container .linkSection .buttonContainer .easterEgg .dragonballBtn{
-        font-size: 1.75rem;
-        padding: 1.85rem;
-        position: relative;
-        top: -1rem;
-    }
-    .container .linkSection .contentContainer .footer{
-        margin-bottom: 3rem;
-        font-size: 4rem;
-    }
+/* ~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~ */
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
 }
 
+.link{
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-height: 3.25rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    transition: border-color .15s, color .15s;
+}
+.link:hover{ border-color: var(--accent); color: var(--bright); }
+
+.link .mark,
+.link .tag{ color: var(--muted); }
+.link .label{ flex-grow: 1; min-width: 0; overflow-wrap: anywhere; }
+.link .tag{ font-size: 0.75rem; white-space: nowrap; }
+
+.link.featured{
+    min-height: 3.5rem;
+    border-color: var(--accent);
+    background: var(--panel-featured);
+}
+.link.featured .label{ font-weight: 700; color: var(--bright); }
+.link.featured .mark,
+.link.featured .tag{ color: var(--accent); }
+
+/* ~~~~~~~~~~~~~~~~SECRETS~~~~~~~~~~~~~~~~ */
+.secrets{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.secrets a{
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 0.75rem;
+    border: 1px dashed var(--accent);
+    border-radius: 10px;
+    color: var(--accent);
+}
+.secrets a:hover{ background: var(--panel-featured); }
+
+/* ~~~~~~~~~~~~~~~~~SHELL~~~~~~~~~~~~~~~~~ */
+.shell{
+    margin-top: auto;
+    gap: 0.25rem;
+}
+
+.output{
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+.output:empty{ display: none; }
+.output p{ white-space: pre-wrap; overflow-wrap: anywhere; }
+.output .reply{ color: var(--muted); }
+.output .error{ color: var(--error); }
+.output .ok{ color: var(--accent); }
+
+.cmd{
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+    min-height: 2.75rem;
+}
+.cmd .prompt{ flex-shrink: 0; }
+
+.cmd input{
+    flex-grow: 1;
+    min-width: 0;
+    padding: 0.25rem 0;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    background: transparent;
+    color: var(--bright);
+    font: inherit;
+    font-size: max(1rem, 16px); /* keeps iOS from zooming on focus */
+    caret-color: var(--accent);
+}
+.cmd input::placeholder{ color: var(--muted); opacity: 1; }
+.cmd input:focus{ outline: none; }
+.cmd input:focus-visible{
+    outline: none;
+    border-bottom-color: var(--accent);
+}
+
+/* ~~~~~~~~~~~~~~~~~WIDER~~~~~~~~~~~~~~~~~ */
+@media (min-width: 40rem){
+    .term{ padding-top: 5rem; padding-bottom: 3rem; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .link{ transition: none; }
+}
